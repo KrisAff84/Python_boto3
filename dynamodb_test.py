@@ -12,16 +12,7 @@ response = ddb.create_table(
         {
             'AttributeName': "Key",
             'AttributeType': 'S',
-        },
-        {
-            'AttributeName': "Artist",
-            'AttributeType': 'S',
-        },
-        {
-            'AttributeName': "Year Released",
-            'AttributeType': 'N',
-        },
-
+        }
     ],
     KeySchema=[
         {
@@ -29,9 +20,9 @@ response = ddb.create_table(
             'KeyType': 'HASH'
         },
         {
-            'AttributeName': 'Artist',
-            'KeyType': 'Range'
-        },
+            'AttributeName': 'Key',
+            'KeyType': 'RANGE'
+        }
     ],
     BillingMode='PROVISIONED',
     ProvisionedThroughput={
