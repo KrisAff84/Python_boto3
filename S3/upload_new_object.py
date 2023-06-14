@@ -5,14 +5,11 @@ import boto3
 s3 = boto3.client('s3')
 
 
-bucket = "kris-boto3-0834287"
-key = 'ProjectFiles/commands'
-body = 'This file contains a list of commands to use for S3 in boto3: \n \
-get_object \n \
-list_objects \n \
-list_objects_v2'  
+bucket = 'kris-boto3-0834287'
+key = 'Folder_A/trash.txt'
+body = 'This is a trash text file' 
 
 
-contenttype = 'text/plain'
+contenttype = 'string/plain'
 
 s3.put_object(Bucket=bucket, Key=key, Body=body, ContentType=contenttype)
