@@ -9,4 +9,4 @@ def bucket_create(bucket):
     )
     return response
 
-bucket_create('test-bucket-98374')
+bucket_create('test-bucket-9837432')
