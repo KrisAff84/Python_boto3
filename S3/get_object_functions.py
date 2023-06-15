@@ -1,4 +1,5 @@
 import boto3
+from list_object_keys_func import *
 
 def filter_objects_ext(client, bucket, extension):
     keys = []
@@ -9,16 +10,7 @@ def filter_objects_ext(client, bucket, extension):
             
     return keys
     
-def list_object_keys(client, bucket, prefix=''):
-    keys = []
-    response = client.list_objects_v2(Bucket=bucket, Prefix=prefix)
-    for content in response["Contents"]:
-        keys.append(content["Key"])
-        
-    return keys
-    
 
-    
 if __name__ == "__main__":
     s3 = boto3.client('s3')
     

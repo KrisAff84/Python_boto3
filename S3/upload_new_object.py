@@ -6,7 +6,7 @@ s3 = boto3.client('s3')
 
 
 bucket = 'kris-boto3-0834287'
-key = 'Folder_A/trash.txt'
+key = 'Folder_B/test.txt'
 body = 'This is a trash text file' 
 
 
