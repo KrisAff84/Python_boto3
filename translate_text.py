@@ -6,7 +6,11 @@ def translate_text(text):
     SourceLanguageCode='en',
     TargetLanguageCode='fr',
     )
-    print(response)
+    original_text = text
+    translated_text = response['TranslatedText']
+    print(f'Original Text: {original_text}')
+    print()
+    print(f'Translated Text: {translated_text}')
 
 def main():
     translate_text()
@@ -14,4 +18,4 @@ def main():
 if __name__ == "__main__":
     
     client = boto3.client('translate')
-    translate_text("I am learning to code in AWS")
+    translate_text('We are going to the store later today.')
