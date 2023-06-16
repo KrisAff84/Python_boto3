@@ -1,10 +1,10 @@
 file = open('Python_boto3/DynamoDB/song_list.txt')
-songlist = {}
+textlist = {}
 for line in file:
     counter = 0
     l = line.strip('\n')
-    song = l.split('-')
-    songlist[song[0]] = song[1], song[2]
-for key, value in songlist.items():
+    item = l.split('-')
+    textlist[item[0]] = item[1], item[2]
+for key, value in textlist.items():
     print(key, ':', value)
 

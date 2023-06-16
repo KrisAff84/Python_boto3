@@ -40,4 +40,4 @@ def batch_write():
         },
         ReturnConsumedCapacity='INDEXES'|'TOTAL'|'NONE',
         ReturnItemCollectionMetrics='SIZE'|'NONE'
-)
+    )
