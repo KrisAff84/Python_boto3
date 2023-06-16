@@ -1,4 +1,5 @@
 import boto3
+import json
 
 def create_table(name, hashkey, rangekey):
     ddb = boto3.client('dynamodb')
@@ -34,5 +35,10 @@ def create_table(name, hashkey, rangekey):
         },
         TableClass='STANDARD',
     )
+    print(json.dumps(response, indent=4, default=str))
 
-create_table('Movies', 'Title', 'Year Released')
+def main():
+    create_table('Random2', 'Title', 'Rating')
+    
+if __name__ == '__main__':
+    main()
