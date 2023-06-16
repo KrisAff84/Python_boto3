@@ -8,5 +8,7 @@ response = ddb.scan(
     ReturnConsumedCapacity='TOTAL'
 )
 
-print(json.dumps(response, indent=2))
+# print(response)
+
+print(json.dumps(response, ensure_ascii=False, indent=2))
 
