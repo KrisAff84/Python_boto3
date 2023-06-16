@@ -22,7 +22,7 @@ def main():
     
     # To get specific index of nexted list for all items in main list
     for i in textlist:
-        print(i[1])
+        print(i[0])
     
 
 if __name__ == '__main__':
