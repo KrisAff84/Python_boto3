@@ -9,7 +9,7 @@ def delete_table(table_name):
     print(json.dumps(response, indent=2))
 
 def main():
-    delete_table('Random2')
+    delete_table('Songs') # Enter the name of the table you wish to delete
     
 if __name__ == '__main__':
     main()
