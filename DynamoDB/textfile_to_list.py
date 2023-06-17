@@ -1,12 +1,10 @@
-file = open('Python_boto3/DynamoDB/song_list.txt')
-
-def textfile_to_list(txt_file, delimeter):
+def textfile_to_list(txt_file, delimiter):
     file = open(txt_file)
     textlist = []
     counter = 0
     for line in file:
         l = line.strip('\n')
-        textlist.append(l.split(delimeter))
+        textlist.append(l.split(delimiter))
         print(textlist[counter])
         counter += 1
     return textlist
@@ -14,8 +12,8 @@ def textfile_to_list(txt_file, delimeter):
 
 def main():
     txt_file = 'Python_boto3/DynamoDB/song_list.txt'
-    delimeter = ':'
-    textlist = textfile_to_list(txt_file, delimeter)
+    delimiter = ':'
+    textlist = textfile_to_list(txt_file, delimiter)
     
         
 if __name__ == '__main__':
