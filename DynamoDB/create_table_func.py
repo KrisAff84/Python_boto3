@@ -38,7 +38,7 @@ def create_table(name, hashkey, rangekey):
     print(json.dumps(response, indent=4, default=str))
 
 def main():
-    create_table('Songs', 'Title', 'Rating')
+    create_table('Songs', 'Singer', 'Song')
     
 if __name__ == '__main__':
     main()
