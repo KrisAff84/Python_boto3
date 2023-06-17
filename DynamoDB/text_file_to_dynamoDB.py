@@ -36,7 +36,7 @@ def add_items_to_table(table, txt_file, delimeter):
 
 def main():
     txt_file = 'Python_boto3/DynamoDB/song_list.txt'
-    delimeter = '-'
+    delimeter = ':'
     table = 'Songs'
     add_items_to_table(table, txt_file, delimeter)
     
