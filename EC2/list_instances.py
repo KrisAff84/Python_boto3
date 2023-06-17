@@ -28,7 +28,7 @@ def list_ec2_instances():
             if "IamInstanceProfile" in instance:
                 print('IAM Instance Profile ARN:', instance["IamInstanceProfile"]['Arn'])
                 print('IAM Instance Profile ID:', instance["IamInstanceProfile"]['Id'])
-            print(" ")
+            print()
             
  
 def main():
