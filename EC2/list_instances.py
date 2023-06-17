@@ -1,34 +1,33 @@
 import boto3
-import json
 
 def list_ec2_instances():
     ec2 = boto3.client('ec2')
-    response = ec2.describe_instances(
-    )
+    response = ec2.describe_instances()
     
     for reservation in response["Reservations"]:
         for instance in reservation["Instances"]:
-            print(instance["InstanceId"])
-            print(instance["InstanceType"])
-            print(instance["ImageId"])
-            print(instance["State"]["Name"])
-            print(instance["VpcId"])
-            print(instance["SubnetId"])
-            print(instance["LaunchTime"])
             if "Tags" in instance:
                 for tag in instance["Tags"]:
                     if tag["Key"] == "Name":
-                        print(tag["Value"]) 
+                        print('Instance Name:', tag["Value"]) 
+            print('Instance ID:', instance["InstanceId"])
+            print('Instance Type:', instance["InstanceType"])
+            print('AMI:', instance["ImageId"])
+            print('State:', instance["State"]["Name"])
+            print('VPC ID:', instance["VpcId"])
+            print('Subnet ID:', instance["SubnetId"])
+            print('Time Launched:', instance["LaunchTime"])
             for sg in instance["SecurityGroups"]:
-                print(sg["GroupId"])
-                print(sg["GroupName"])
-            print(instance["PrivateIpAddress"])
+                print('Security Group ID:', sg["GroupId"])
+                print('Security Group Name:', sg["GroupName"])
+            print('Private IP Address:', instance["PrivateIpAddress"])
             if "PublicIpAddress" in instance:
-                print(instance["PublicIpAddress"])
+                print('Public IP Address:', instance["PublicIpAddress"])
             if "KeyName" in instance:
-                print(instance["KeyName"])
+                print('Key Pair Name:', instance["KeyName"])
             if "IamInstanceProfile" in instance:
-                print(instance["IamInstanceProfile"])
+                print('IAM Instance Profile ARN:', instance["IamInstanceProfile"]['Arn'])
+                print('IAM Instance Profile ID:', instance["IamInstanceProfile"]['Id'])
             print(" ")
             
  
