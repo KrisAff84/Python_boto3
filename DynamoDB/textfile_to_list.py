@@ -15,6 +15,13 @@ def main():
     delimiter = ':'
     textlist = textfile_to_list(txt_file, delimiter)
     
+    #This Works!
+    # for entry in textlist:
+    #     for att in entry:
+    #         if att.startswith('*'):
+    #             print(entry)
+            
+    
         
 if __name__ == '__main__':
     main()
