@@ -8,7 +8,7 @@ def create_table(name, hashkey, rangekey):
         AttributeDefinitions=[
             {
                 'AttributeName': hashkey,
-                'AttributeType': 'N',
+                'AttributeType': 'S',
             },
             {
                 'AttributeName': rangekey,
@@ -38,9 +38,9 @@ def create_table(name, hashkey, rangekey):
     print(json.dumps(response, indent=4, default=str))
 
 def main():
-    name = 'Movies'
-    hash_key = 'year'
-    range_key = 'title'
+    name = 'Songs'
+    hash_key = 'Singer'
+    range_key = 'Song'
     create_table(name, hash_key, range_key)
     
 if __name__ == '__main__':
