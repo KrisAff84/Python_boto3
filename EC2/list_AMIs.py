@@ -16,7 +16,7 @@ def list_images(owner):
     print('Total Images:', image_count)
     
 def main():
-    owner = 'amazon'
+    owner = 'self'
     list_images(owner)
     
     

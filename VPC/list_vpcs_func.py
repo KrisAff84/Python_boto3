@@ -1,7 +1,8 @@
 import boto3
 
-def list_vpcs(client, filters=[]):
-    response = client.describe_vpcs(Filters=filters)
+def list_vpcs(filters=[]):
+    ec2 = boto3.client('ec2')
+    response = ec2.describe_vpcs(Filters=filters)
     for vpc in response['Vpcs']:
         if 'Tags' in vpc:
             for tag in vpc['Tags']:
@@ -12,24 +13,26 @@ def list_vpcs(client, filters=[]):
         print('Default VPC:', vpc['IsDefault'])
         print()
 
-def get_vpc_name(client, filters=[]):
-    response = client.describe_vpcs(Filters=filters)
+def get_vpc_name(filters=[]):
+    ec2 = boto3.client('ec2')
+    response = ec2.describe_vpcs(Filters=filters)
     for vpc in response['Vpcs']:
         if 'Tags' in vpc:
             for tag in vpc['Tags']:
                 if 'Name' == tag['Key']:
                     print(tag['Value'])
+
+
+def main():
+    # filters=[{'Name': 'isDefault', 'Values': ['true']}]
+    list_vpcs()  # returns all VPC
+    # get_vpc_name(filters)  # returns all VPC names
+
                     
 if __name__ == '__main__':
-    list_vpcs(boto3.client('ec2'))  
-    ec2 = boto3.client('ec2')
-    filters=[{'Name': 'isDefault', 'Values': ['true']}]
-        
-    list_vpcs(ec2)  # returns all VPC
-    
-    list_vpcs(ec2, filters)  # Returns only default VPC
-    
-    get_vpc_name(ec2)  # returns all VPC names
+    main()
+  
+  
 
 #######################################################
 # Another way of doing it (not as clean imo)
