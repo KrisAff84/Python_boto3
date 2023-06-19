@@ -25,7 +25,7 @@ def create_ec2_instance(ami, key_pair, sg_id, instance_type, subnet_id):
         
 def main():
     ami = 'ami-0363581eb95e86b74'
-    key_pair = 'boto3_key'
+    key_pair = 'boto'
     sg_id = 'sg-0138eeb2f4568d5c0'
     instance_type = 't2.micro'
     subnet_id = 'subnet-0de0deccc117acb9a'

@@ -12,7 +12,7 @@ def create_keys(key_name, file_name):
     
 
 def main():
-    key_name = 'test2'
+    key_name = 'test_key'
     file_ext = '.pem'
     file_name = (key_name + file_ext)
     create_keys(key_name, file_name)
