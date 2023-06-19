@@ -15,7 +15,15 @@ def main():
     delimiter = ':'
     textlist = textfile_to_list(txt_file, delimiter)
     
-    #This Works!
+    # Either of the below methods work for extracting songs with '*'
+    print()
+    print('Songs to review:')
+    for entry in textlist:
+        for att in entry:
+            if '*' in att:
+                print(entry)
+    # print()
+    # print('Songs to review:')
     # for entry in textlist:
     #     for att in entry:
     #         if att.startswith('*'):
