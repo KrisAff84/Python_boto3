@@ -14,13 +14,16 @@ def list_ec2_instances():
             print('Instance Type:', instance["InstanceType"])
             print('AMI:', instance["ImageId"])
             print('State:', instance["State"]["Name"])
-            print('VPC ID:', instance["VpcId"])
-            print('Subnet ID:', instance["SubnetId"])
+            if 'VpcId' in instance:
+                print('VPC ID:', instance["VpcId"])
+            if 'SubnetId' in instance:
+                print('Subnet ID:', instance["SubnetId"])
             print('Time Launched:', instance["LaunchTime"])
             for sg in instance["SecurityGroups"]:
                 print('Security Group ID:', sg["GroupId"])
                 print('Security Group Name:', sg["GroupName"])
-            print('Private IP Address:', instance["PrivateIpAddress"])
+            if 'PrivateIpAddress' in instance:
+                print('Private IP Address:', instance["PrivateIpAddress"])
             if "PublicIpAddress" in instance:
                 print('Public IP Address:', instance["PublicIpAddress"])
             if "KeyName" in instance:
