@@ -1,9 +1,9 @@
 import boto3 
 
-ec2 = boto3.client('ec2')
 
-def list_subnets(client):
-    response = client.describe_subnets()
+def list_subnets():
+    ec2 = boto3.client('ec2')
+    response = ec2.describe_subnets()
     for subnet in response['Subnets']:
         if 'Tags' in subnet:
             for tag in subnet['Tags']:
@@ -15,6 +15,10 @@ def list_subnets(client):
         print(subnet['VpcId'])
         print()
 
+
+def main():
+    list_subnets()
+
+
 if __name__ == '__main__':
-    ec2 = boto3.client('ec2')
-    list_subnets(ec2)
+    main()
