@@ -17,7 +17,7 @@ def add_items_to_table(table, txt_file, delimeter):
     for entry in textlist:
         singer = entry[2]
         song = entry[0]
-        key = entry[1]  
+        key = entry[1]
         response = ddb.put_item(
             Item={
                 'Singer': {
