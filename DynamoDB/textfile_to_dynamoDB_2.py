@@ -24,9 +24,6 @@ def add_items_to_table(table, txt_file, delimiter):
         response = ddb.put_item(
             TableName=table,
             Item={
-                'Review': {
-                    'S': review,
-                },
                 'Singer': {
                     'S': singer,
                 },
@@ -35,6 +32,9 @@ def add_items_to_table(table, txt_file, delimiter):
                 },
                 'Key': {
                     'S': key,
+                },
+                'Review': {
+                    'S': review,
                 },
             },
         )
