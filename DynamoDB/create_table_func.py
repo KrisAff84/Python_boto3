@@ -28,8 +28,8 @@ def create_table(name, hashkey, rangekey):
         ],
         BillingMode='PROVISIONED',
         ProvisionedThroughput={
-            'ReadCapacityUnits': 25,
-            'WriteCapacityUnits': 25
+            'ReadCapacityUnits': 10,
+            'WriteCapacityUnits': 10
         },
         StreamSpecification={
             'StreamEnabled': False,
@@ -41,8 +41,8 @@ def create_table(name, hashkey, rangekey):
 
 def main():
     name = 'Songs'
-    hash_key = 'Review'
-    range_key = 'Singer'
+    hash_key = 'Singer'
+    range_key = 'Song'
     create_table(name, hash_key, range_key)
 
     

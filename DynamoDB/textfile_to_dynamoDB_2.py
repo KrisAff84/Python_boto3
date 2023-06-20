@@ -19,16 +19,13 @@ def add_items_to_table(table, txt_file, delimiter):
         song = entry[0]
         key = entry[1]
         if len(entry) > 3:
-            review = 'Yes'
+            review = 'Review'
         elif len(entry) <= 3:
-            review = 'No'
+            review = ' '
         totalsize += 1
         response = ddb.put_item(
             TableName=table,
             Item={
-                'Review': {
-                    'S': review,
-                },
                 'Singer': {
                     'S': singer,
                 },
@@ -38,10 +35,12 @@ def add_items_to_table(table, txt_file, delimiter):
                 'Key': {
                     'S': key,
                 },
+                'Review': {
+                    'S': review,
+                },
             },
         )
-    print(totalsize)
-    print(response)
+    return response
 
 
 def main():
