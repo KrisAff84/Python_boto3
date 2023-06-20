@@ -1,29 +1,34 @@
 import boto3
 
 
-def textfile_to_list(txt_file, delimeter):
+def textfile_to_list(txt_file, delimiter):
     file = open(txt_file)
     textlist = []
-    counter = 0
     for line in file:
         l = line.strip('\n')
-        textlist.append(l.split(delimeter))
-        counter += 1
+        textlist.append(l.split(delimiter))
     return textlist
+
     
-def add_items_to_table(table, txt_file, delimeter):
-    textlist = textfile_to_list(txt_file, delimeter)
+def add_items_to_table(table, txt_file, delimiter):
+    textlist = textfile_to_list(txt_file, delimiter)
     ddb = boto3.client('dynamodb')
+    totalsize = 0
     for entry in textlist:
         singer = entry[2]
         song = entry[0]
         key = entry[1]
-        if 0 <= index < len(entry):
-            review = entry[3]
-        else:
-            review = ' '
+        if len(entry) > 3:
+            review = 'Yes'
+        elif len(entry) <= 3:
+            review = 'No'
+        totalsize += 1
         response = ddb.put_item(
+            TableName=table,
             Item={
+                'Review': {
+                    'S': review,
+                },
                 'Singer': {
                     'S': singer,
                 },
@@ -33,19 +38,17 @@ def add_items_to_table(table, txt_file, delimeter):
                 'Key': {
                     'S': key,
                 },
-                'Review': {
-                    'S': review,
-                }
             },
-            TableName = table,
         )
+    print(totalsize)
+    print(response)
 
 
 def main():
     txt_file = 'Python_boto3/DynamoDB/song_list.txt'
-    delimeter = ':'
+    delimiter = ':'
     table = 'Songs'
-    add_items_to_table(table, txt_file, delimeter)
+    add_items_to_table(table, txt_file, delimiter)
     
     
 if __name__ == '__main__':
