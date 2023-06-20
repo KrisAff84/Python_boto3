@@ -2,7 +2,7 @@ import boto3
 import json
 
 
-def query_table_filter(singer, review='Review'):
+def query_table_filter(singer, review='Review'): 
     ddb = boto3.client('dynamodb')
     response = ddb.query(
         TableName='Songs',
@@ -22,9 +22,10 @@ def query_table_filter(singer, review='Review'):
     
     
 def main():
-    singer = 'Eundo'
+    singer = 'Nathalie'
     query_table_filter(singer)
     
 
 if __name__ == '__main__':
     main()
+    
