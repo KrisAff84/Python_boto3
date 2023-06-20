@@ -13,16 +13,14 @@ def textfile_to_list(txt_file, delimiter):
 def add_items_to_table(table, txt_file, delimiter):
     textlist = textfile_to_list(txt_file, delimiter)
     ddb = boto3.client('dynamodb')
-    totalsize = 0
     for entry in textlist:
         singer = entry[2]
         song = entry[0]
         key = entry[1]
         if len(entry) > 3:
-            review = 'Yes'
+            review = 'Review'
         elif len(entry) <= 3:
-            review = 'No'
-        totalsize += 1
+            review = ' '
         response = ddb.put_item(
             TableName=table,
             Item={
@@ -40,8 +38,7 @@ def add_items_to_table(table, txt_file, delimiter):
                 },
             },
         )
-    print(totalsize)
-    print(response)
+    return response
 
 
 def main():
