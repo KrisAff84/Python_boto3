@@ -28,8 +28,8 @@ def create_table(name, hashkey, rangekey):
         ],
         BillingMode='PROVISIONED',
         ProvisionedThroughput={
-            'ReadCapacityUnits': 10,
-            'WriteCapacityUnits': 10
+            'ReadCapacityUnits': 5,
+            'WriteCapacityUnits': 5
         },
         StreamSpecification={
             'StreamEnabled': False,
