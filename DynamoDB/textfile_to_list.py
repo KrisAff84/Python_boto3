@@ -15,22 +15,7 @@ def main():
     delimiter = ':'
     textlist = textfile_to_list(txt_file, delimiter)
     
-    # Either of the below methods work for extracting songs with '*'
-    print()
-    print('Songs to review:')
-    for entry in textlist:
-        for att in entry:
-            if '*' in att:
-                print(entry)
-    # print()
-    # print('Songs to review:')
-    # for entry in textlist:
-    #     for att in entry:
-    #         if att.startswith('*'):
-    #             print(entry)
             
-    
-        
 if __name__ == '__main__':
     main()
 
@@ -44,3 +29,16 @@ if __name__ == '__main__':
     #     if i[2] == 'Kaela':
     #         print(i[0])
         
+    # Either of the below methods work for extracting songs with '*'
+    # print()
+    # print('Songs to review:')
+    # for entry in textlist:
+    #     for att in entry:
+    #         if '*' in att:
+    #             print(entry)
+    # print()
+    # print('Songs to review:')
+    # for entry in textlist:
+    #     for att in entry:
+    #         if att.startswith('*'):
+    #             print(entry)
