@@ -40,9 +40,9 @@ def create_table(name, hashkey, rangekey):
 
 
 def main():
-    name = 'Songs'
-    hash_key = 'Singer'
-    range_key = 'Song'
+    name = 'Movies'
+    hash_key = 'Year Released'
+    range_key = 'Director'
     create_table(name, hash_key, range_key)
 
     
