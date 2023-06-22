@@ -37,7 +37,7 @@ def lambda_handler(event, context):
             ]
         )
         
-        snsarn = 'arn:aws:sns:us-east-1:835656321421:Email-Me:d5760869-db14-4aa7-bc5f-54cb3504782f'
+        snsarn = 'arn:aws:sns:us-east-1:835656321421:Email-Me'
         errormsg = 'EC2 ' + ec2_instance_id + ' Stopped'
         snsresponse = sns.publish(
         TopicArn=snsarn,
