@@ -15,7 +15,7 @@ def create_queue(name):
 
 
 def main():
-    name = 'Test_Messages'
+    name = 'Test_Messages2'
     create_queue(name)
 
 
