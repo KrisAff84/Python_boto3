@@ -11,7 +11,7 @@ def delete_queue(url):
 
 
 def main():
-    url = ''
+    url = 'https://sqs.us-east-1.amazonaws.com/835656321421/Test_Messages2'
     delete_queue(url)
 
 
