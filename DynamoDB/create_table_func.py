@@ -40,9 +40,9 @@ def create_table(name, hashkey, rangekey):
 
 
 def main():
-    name = 'Movies'
-    hash_key = 'Year Released'
-    range_key = 'Director'
+    name = 'Messages'
+    hash_key = 'Date'
+    range_key = 'ID'
     create_table(name, hash_key, range_key)
 
     
