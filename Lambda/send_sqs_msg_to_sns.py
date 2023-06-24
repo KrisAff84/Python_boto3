@@ -7,7 +7,7 @@ queue_url = 'https://sqs.us-east-1.amazonaws.com/835656321421/Test_Messages'
 
 
 def lambda_handler(event, context):
-    response = sqs.receive_message(
+    context = sqs.receive_message(
         QueueUrl=queue_url,
         MaxNumberOfMessages= 1,
         WaitTimeSeconds= 10,
