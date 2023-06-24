@@ -8,9 +8,9 @@ response = sqs.receive_message(
     WaitTimeSeconds= 10,
 )
     
-# for message in response['Messages']:
-#     print('Message ID:', message['MessageId'])
-#     print('Body:', message['Body'])
-#     print()
+for message in response["Messages"]:
+    print("Message ID:", message["MessageId"])
+    print("Body:", message["Body"])
+    print()
     
-print(response)
+# print(response)
