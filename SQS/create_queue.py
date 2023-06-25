@@ -7,7 +7,7 @@ def create_queue(name):
     response = sqs.create_queue(
         QueueName=name,
         Attributes={
-            'ReceiveMessageWaitTimeSeconds': '5'
+            'ReceiveMessageWaitTimeSeconds': '10'
         }
     )
     print(json.dumps(response, indent=4, default=str))
@@ -15,7 +15,7 @@ def create_queue(name):
 
 
 def main():
-    name = 'Test_Messages2'
+    name = 'Time_Messages'
     create_queue(name)
 
 

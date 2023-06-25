@@ -21,8 +21,8 @@ def create_topic_subscribe(topic, email_address):
     
 
 def main():
-    topic = 'test_topic'
-    email_address = 'email_address@gmail.com'
+    topic = 'Current_Time'
+    email_address = 'krisaff@gmail.com'
     create_topic_subscribe(topic, email_address)
     
 
