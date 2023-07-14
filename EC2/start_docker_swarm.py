@@ -1,5 +1,4 @@
 import boto3 
-import json
 
 
 def start_docker_fleet(node1, node2, node3):
@@ -25,7 +24,7 @@ def get_public_ip(node1):
     )
     print()
     for instance in response['Reservations']:
-        print('Pulbic IP of Node1:', instance['Instances'][0]['PublicIpAddress'])    
+        print('Public IP of Node1:', instance['Instances'][0]['PublicIpAddress'])    
 
 
 def main():
