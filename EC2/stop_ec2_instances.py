@@ -9,7 +9,7 @@ def stop_ec2_instances(Instance1, Instance2, Instance3):
             Instance1,
             Instance2,
             Instance3
-        ],
+        ]
     )
     print(json.dumps(response, indent=4, default=str))
 
