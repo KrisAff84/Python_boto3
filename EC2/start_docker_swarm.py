@@ -1,5 +1,4 @@
 import boto3 
-import json
 
 
 def start_docker_fleet(node1, node2, node3):
