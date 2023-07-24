@@ -15,9 +15,9 @@ def stop_ec2_instances(Instance1, Instance2, Instance3):
 
 
 def main():
-    Instance1='i-05747a9d38a158d23'
-    Instance2='i-06545abf9d8303298'
-    Instance3='i-0259a1b93d8e0c690'
+    Instance1='i-0679ba0b2c3374832'
+    Instance2='i-03a164ed1b62c24fc'
+    Instance3='i-0faec17efbccbdd62'
     stop_ec2_instances(Instance1, Instance2, Instance3)
 
 if __name__ == '__main__':

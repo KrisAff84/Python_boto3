@@ -42,7 +42,7 @@ def replace_public_ip(instanceID, config_file, line_number):
     print()
 
 def main():
-    instanceID='i-05747a9d38a158d23'
+    instanceID='i-0679ba0b2c3374832'
     config_file='/Users/Kris/.ssh/config'
     line_number = 5
     start_instance(instanceID)

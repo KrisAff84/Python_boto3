@@ -43,9 +43,9 @@ def get_public_ip(node1, config_file, line_number):
 
 
 def main():
-    node1='i-05747a9d38a158d23'
-    node2='i-06545abf9d8303298'
-    node3='i-0259a1b93d8e0c690'
+    node1='i-0679ba0b2c3374832'
+    node2='i-03a164ed1b62c24fc'
+    node3='i-0faec17efbccbdd62'
     config_file='/Users/Kris/.ssh/config'
     line_number = 5
     start_docker_fleet(node1, node2, node3)
