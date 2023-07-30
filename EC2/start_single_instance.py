@@ -29,7 +29,7 @@ def get_public_ip(instanceID):
 
 
 def main():
-    instanceID='i-083e5b47ad75d1fba'
+    instanceID = 'i-07e199db2c4d792d4'
     start_instance(instanceID)
     get_public_ip(instanceID)
 
