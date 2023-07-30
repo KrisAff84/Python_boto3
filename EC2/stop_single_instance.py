@@ -7,7 +7,7 @@ def stop_ec2_instance(InstanceID):
     response = ec2.stop_instances(
         InstanceIds=[
             InstanceID,
-                    ]
+        ]
     )
     print(json.dumps(response, indent=4, default=str))
 
