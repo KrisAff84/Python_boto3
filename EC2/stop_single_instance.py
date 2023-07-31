@@ -9,7 +9,15 @@ def stop_ec2_instance(InstanceID):
             InstanceID,
         ]
     )
-    print(json.dumps(response, indent=4, default=str))
+    # if "'Code': 80, 'Name': 'stopped'" in response["StoppingInstances"][0]["CurrentState"]
+    #     print("Instance is already stopped")
+
+    if "stopped" in response["StoppingInstances"][0]["CurrentState"]["Name"]:
+        print()
+        print("Instance is already stopped")
+        print()
+    else:
+        print(json.dumps(response, indent=4, default=str))
 
 
 def main():
