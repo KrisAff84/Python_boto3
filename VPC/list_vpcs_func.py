@@ -1,5 +1,6 @@
 import boto3
 
+
 def list_vpcs(filters=[]):
     ec2 = boto3.client('ec2')
     response = ec2.describe_vpcs(Filters=filters)
@@ -12,6 +13,7 @@ def list_vpcs(filters=[]):
         print(vpc['CidrBlock']) 
         print('Default VPC:', vpc['IsDefault'])
         print()
+
 
 def get_vpc_name(filters=[]):
     ec2 = boto3.client('ec2')
