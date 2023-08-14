@@ -84,3 +84,4 @@ for region in regions:
             print('Allocated Storage:', snapshot['AllocatedStorage'], 'GB')
             print()
     print()
+    
