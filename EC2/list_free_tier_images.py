@@ -1,7 +1,12 @@
 import boto3
 
 
-regions = ['us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
+regions = [
+    'us-east-1', 
+    'us-east-2', 
+    'us-west-1', 
+    'us-west-2',
+]
 
 
 class Format:
@@ -17,9 +22,6 @@ for region in regions:
     print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
     ec2 = boto3.client('ec2', region_name=region)
     response = ec2.describe_images(
-        # Owners=[
-        # 'amazon',
-        # ],
         Filters=[
         {
             'Name': 'name',
@@ -27,7 +29,8 @@ for region in regions:
                 'al2023-ami-2023.1.20230809.0-kernel-6.1-x86_64',
                 'al2023-ami-2023.1.20230809.0-kernel-6.1-arm64',
                 'amzn2-ami-kernel-5.10-hvm-2.0.20230727.0-x86_64-gp2',
-                'amzn2-ami-kernel-5.10-hvm-2.0.20230727.0-arm64-gp2'           
+                'amzn2-ami-kernel-5.10-hvm-2.0.20230727.0-arm64-gp2',
+                'amzn2-x86_64-MATEDE_DOTNET-2022.08.31'           
             ]
         },
     ],
@@ -35,6 +38,7 @@ for region in regions:
     for image in response['Images']:
         print('Image ID:', image['ImageId'])
         print('Image Name:', image['Name'])
+        print('Description:', image['Description'])
         print('Architecture:', image['Architecture'])
         print()
 
@@ -43,10 +47,7 @@ print()
 for region in regions:
     print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
     ec2 = boto3.client('ec2', region_name=region)
-    response = ec2.describe_images(
-        # Owners=[
-        # 'amazon',
-        # ],
+    response = ec2.describe_images(     
         Filters=[
         {
             'Name': 'name',
@@ -62,5 +63,54 @@ for region in regions:
     for image in response['Images']:
         print('Image ID:', image['ImageId'])
         print('Image Name:', image['Name'])
+        print('Description:', image['Description'])
         print('Architecture:', image['Architecture'])
         print()
+
+print(f'{Format.blue_underline}********************** SUSE Linux Images **********************{Format.end}')
+print()
+for region in regions:
+    print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
+    ec2 = boto3.client('ec2', region_name=region)
+    response = ec2.describe_images(
+        Filters=[
+        {
+            'Name': 'name',
+            'Values': [
+                'suse-sles-15-sp5-v20230620-hvm-ssd-x86_64',
+                'suse-sles-15-sp5-v20230620-hvm-ssd-arm64',
+                'suse-sles-12-sp5-v20230206-hvm-ssd-x86_64'          
+            ]
+        },
+    ],
+    )
+    for image in response['Images']:
+        print('Image ID:', image['ImageId'])
+        print('Image Name:', image['Name'])
+        print('Description:', image['Description'])
+        print('Architecture:', image['Architecture'])
+        print()
+
+print(f'{Format.blue_underline}********************** Red Hat Images **********************{Format.end}')
+print()
+for region in regions:
+    print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
+    ec2 = boto3.client('ec2', region_name=region)
+    response = ec2.describe_images(
+        Filters=[
+        {
+            'Name': 'name',
+            'Values': [
+                'RHEL-9.2.0_HVM-20230503-x86_64-41-Hourly2-GP2',
+                'RHEL-9.2.0_HVM-20230503-arm64-41-Hourly2-GP2'           
+            ]
+        },
+    ],
+    )
+    for image in response['Images']:
+        print('Image ID:', image['ImageId'])
+        print('Image Name:', image['Name'])
+        print('Description:', image['Description'])
+        print('Architecture:', image['Architecture'])
+        print()
+        
