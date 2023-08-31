@@ -1,8 +1,10 @@
 import boto3 
 
 
+region = 'us-west-1'
+
 def start_docker_fleet(node1, node2, node3):
-    ec2 = boto3.client('ec2')
+    ec2 = boto3.client('ec2', region_name=region)
     waiter = ec2.get_waiter('instance_stopped')
     waiter.wait(InstanceIds=[node1, node2, node3])
     response = ec2.start_instances(
@@ -44,8 +46,8 @@ def get_public_ip(node1, config_file, line_number):
 
 def main():
     node1='i-0679ba0b2c3374832'
-    node2='i-03a164ed1b62c24fc'
-    node3='i-0faec17efbccbdd62'
+    node2='i-0f2a756ed209bb8dc'
+    node3='i-058847494653dd0ad'
     config_file='/Users/Kris/.ssh/config'
     line_number = 5
     start_docker_fleet(node1, node2, node3)

@@ -22,7 +22,7 @@ def stop_ec2_instance(InstanceID):
 
 def main():
     
-    InstanceID = 'i-07e199db2c4d792d4'
+    InstanceID = 'i-0679ba0b2c3374832'
     stop_ec2_instance(InstanceID)
 
 if __name__ == '__main__':
