@@ -1,5 +1,5 @@
 import boto3
-
+# Currently gathers AMI information. Need to add, key pairs available in region, security groups, and subnets in region.
 
 regions = [
     'us-east-1', 
@@ -15,11 +15,15 @@ class Format:
     blue = '\033[34m'
 
 
-print()
-print(f'{Format.blue_underline}********************** Amazon Linux Images **********************{Format.end}')
-print()
 for region in regions:
-    print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
+    print()
+    print(f'{Format.blue}**********************************************************************{Format.end}')
+    print(f'                         {Format.blue}Region: {region}{Format.end}')
+    print(f'{Format.blue}**********************************************************************{Format.end}')
+    print()
+    print()
+    print(f'{Format.blue_underline}********************** Amazon Linux Images **********************{Format.end}')
+    print()
     ec2 = boto3.client('ec2', region_name=region)
     response = ec2.describe_images(
         Filters=[
@@ -42,11 +46,8 @@ for region in regions:
         print('Architecture:', image['Architecture'])
         print()
 
-print(f'{Format.blue_underline}********************** Ubuntu Images **********************{Format.end}')
-print()
-for region in regions:
-    print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    print(f'{Format.blue_underline}********************** Ubuntu Images **********************{Format.end}')
+    print()
     response = ec2.describe_images(     
         Filters=[
         {
@@ -67,11 +68,8 @@ for region in regions:
         print('Architecture:', image['Architecture'])
         print()
 
-print(f'{Format.blue_underline}********************** SUSE Linux Images **********************{Format.end}')
-print()
-for region in regions:
-    print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    print(f'{Format.blue_underline}********************** SUSE Linux Images **********************{Format.end}')
+    print()
     response = ec2.describe_images(
         Filters=[
         {
@@ -91,11 +89,8 @@ for region in regions:
         print('Architecture:', image['Architecture'])
         print()
 
-print(f'{Format.blue_underline}********************** Red Hat Images **********************{Format.end}')
-print()
-for region in regions:
-    print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    print(f'{Format.blue_underline}********************** Red Hat Images **********************{Format.end}')
+    print()
     response = ec2.describe_images(
         Filters=[
         {
