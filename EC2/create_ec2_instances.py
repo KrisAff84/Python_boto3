@@ -1,8 +1,8 @@
 import boto3
 
 
-def create_ec2_instance(ami, key_pair, sg_id, instance_type, subnet_id):
-    ec2 = boto3.client('ec2')
+def create_ec2_instance(region, ami, key_pair, sg_id, instance_type, subnet_id):
+    ec2 = boto3.client('ec2', region_name=region)
     response = ec2.run_instances(
         ImageId=ami,
         InstanceType=instance_type,
@@ -24,12 +24,13 @@ def create_ec2_instance(ami, key_pair, sg_id, instance_type, subnet_id):
        
         
 def main():
-    ami = 'ami-0363581eb95e86b74'
+    region = 'us-east-1'
+    ami = 'ami-026ebd4cfe2c043b2'
     key_pair = 'boto3_key'
     sg_id = 'sg-0138eeb2f4568d5c0'
     instance_type = 't2.micro'
     subnet_id = 'subnet-0de0deccc117acb9a'
-    create_ec2_instance(ami, key_pair, sg_id, instance_type, subnet_id)
+    create_ec2_instance(region, ami, key_pair, sg_id, instance_type, subnet_id)
     
     
 if __name__ == '__main__':
