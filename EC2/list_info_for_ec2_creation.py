@@ -108,4 +108,12 @@ for region in regions:
         print('Description:', image['Description'])
         print('Architecture:', image['Architecture'])
         print()
+    
+    print(f'{Format.blue_underline}********************** Key Pairs **********************{Format.end}')
+    print()
+    response = ec2.describe_key_pairs()
+    for keypair in response['KeyPairs']:
+        print(keypair['KeyName'])
+        print(keypair['KeyPairId'])
+        print()
         
