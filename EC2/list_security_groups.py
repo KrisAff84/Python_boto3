@@ -3,8 +3,16 @@ import boto3
 
 def list_security_groups():
     ec2 = boto3.client('ec2')
-    response = ec2.describe_security_groups()
-    
+    response = ec2.describe_security_groups(
+        # Filters=[
+        #     {
+        #         'Name': 'vpc-id',
+        #         'Values': [
+        #             'vpc-0b5e4f154b9d81d02'
+        #         ]
+        #     }
+        # ]
+    )
     for sg in response['SecurityGroups']:
         print('*************************************************************')
         print()
