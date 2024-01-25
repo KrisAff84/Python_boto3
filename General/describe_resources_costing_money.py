@@ -1,11 +1,26 @@
+''' This script is designed to give a quick overview of provisioned resources costing money in your AWS account.
+    Any number of regions can be added to the regions list, and the script will iterate through each, 
+    displaying output to the terminal in human readable form.
+
+    Currently, the script will describe the following resources:
+
+    EC2 Instances
+    Elastic IPs
+    RDS Snapshots
+'''
+
 import boto3
-import json
 
 
 regions = ["us-east-1", "us-east-2", "us-west-1", "us-west-2"]
 
 
 class Format:
+    '''
+    Used to format the output of a string with color and style.
+
+    '''
+
     end = '\033[0m'
     blue_underline = '\033[34;4;1m'
     blue = '\033[34m'
