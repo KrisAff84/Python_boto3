@@ -1,6 +1,5 @@
-'''
-This script will show the contents of an S3 bucket, and ask user for a key to replace. 
-The script will then ask for the path to the new file, and replace the file in the bucket.
+''' This script will show the contents of an S3 bucket, and ask user for a key to replace. 
+    The script will then ask for the path to the new file, and replace the file in the bucket.
 '''
 
 import boto3

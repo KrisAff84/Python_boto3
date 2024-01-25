@@ -1,3 +1,18 @@
+''' This script lists some of the most commonly used free tier AMIs in each region.
+    Any number of regions can be added to the regions list, and the script will iterate through each. 
+
+    The script can also be modified to list other AMIs, either not in the free tier, or other free tier AMIs.
+
+    Currently, the script lists the following images:
+
+    Amazon Linux
+    Ubuntu
+    SUSE Linux
+    Red Hat
+
+    When available, both x86_64 and arm64 images are listed.
+'''
+
 import boto3
 
 
@@ -10,6 +25,10 @@ regions = [
 
 
 class Format:
+    '''
+    This class is used to format the output of the script.
+    '''
+
     end = '\033[0m'
     blue_underline = '\033[34;4;1m'
     blue = '\033[34m'
