@@ -3,12 +3,15 @@
 '''
 
 import boto3
-from datetime import datetime
+
+acl = 'public-read'
+region = 'us-east-2'
+bucket_name = 'my-resume-kris'
+content_type = 'application/pdf'
 
 session = boto3.Session(profile_name='admin-profile')
-bucket_name = 'my-resume-kris'
 
-s3 = session.client('s3')
+s3 = session.client('s3', region_name=region)
 print()
 print("Current files the bucket: ")
 print()
@@ -20,6 +23,13 @@ for content in response['Contents']:
 bucket_key = input("Enter the bucket key you want to replace: ")
 file_path = input("Enter the path to the new file: ")
 
-s3.delete_object(Bucket=bucket_name, Key=bucket_key)
-s3.upload_file(file_path, bucket_name, bucket_key)
+s3.delete_object(Bucket=bucket_name, 
+                 Key=bucket_key)
+
+s3.put_object(Bucket=bucket_name, 
+              ACL=acl, 
+              Key=bucket_key, 
+              ContentType=content_type, 
+              Body=open(file_path, 'rb'))
+
 print('File replaced successfully')
