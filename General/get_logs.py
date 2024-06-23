@@ -12,12 +12,12 @@ def get_log_groups():
     return response['logGroups']
 
 
-def get_log_streams(log_group):
+def get_log_streams(log_group, num_of_log_streams):
     response = cw_logs.describe_log_streams(
         logGroupName=log_group,
         orderBy='LastEventTime',
         descending=True,
-        limit=10)
+        limit=num_of_log_streams)
     return response['logStreams']
 
 
@@ -97,7 +97,8 @@ if __name__ == "__main__":
 
 
     log_group = input(f"{Format.blue}\nLog group name: {Format.end}")
-    log_streams = get_log_streams(log_group)
+    num_of_log_streams = int(input(f"{Format.blue}Limit (Up to 50): {Format.end}"))
+    log_streams = get_log_streams(log_group, num_of_log_streams)
 
     # list log streams in selected log group
     print(f"{Format.blue_underline}\nLog streams in {log_group} log group:{Format.end}\n")
@@ -105,7 +106,7 @@ if __name__ == "__main__":
 
     # Get log events in selected log stream
     log_stream = input(f"{Format.blue}\nLog stream name: {Format.end}")
-    num_of_events = int(input(f"{Format.blue}Limit: {Format.end}"))
+    num_of_events = int(input(f"{Format.blue}Limit (Up to 10000): {Format.end}"))
     log_events = get_log_events(log_group, log_stream, num_of_events)
     # print(log_events)
     
