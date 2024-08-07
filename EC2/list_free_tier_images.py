@@ -16,14 +16,6 @@
 import boto3
 
 
-regions = [
-    'us-east-1', 
-    'us-east-2', 
-    'us-west-1', 
-    'us-west-2'
-]
-
-
 class Format:
     '''
     This class is used to format the output of the script.
@@ -33,13 +25,23 @@ class Format:
     blue_underline = '\033[34;4;1m'
     blue = '\033[34m'
 
+profile = input(f"{Format.blue}\nAWS profile:{Format.end} ")
+session = boto3.Session(profile_name=profile)
 
+regions = input(f"{Format.blue}\nRegions to list (Space separated. Press Enter for all US regions):{Format.end} ").split(' ')
+if '' in regions:
+    regions = [
+        'us-east-1',
+        'us-east-2',
+        'us-west-1',
+        'us-west-2'
+    ]
 print()
 print(f'{Format.blue_underline}********************** Amazon Linux Images **********************{Format.end}')
 print()
 for region in regions:
     print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    ec2 = session.client('ec2', region_name=region)
     response = ec2.describe_images(
         Filters=[
         {
@@ -65,7 +67,7 @@ print(f'{Format.blue_underline}********************** Ubuntu Images ************
 print()
 for region in regions:
     print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    ec2 = session.client('ec2', region_name=region)
     response = ec2.describe_images(     
         Filters=[
         {
@@ -90,7 +92,7 @@ print(f'{Format.blue_underline}********************** SUSE Linux Images ********
 print()
 for region in regions:
     print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    ec2 = session.client('ec2', region_name=region)
     response = ec2.describe_images(
         Filters=[
         {
@@ -114,7 +116,7 @@ print(f'{Format.blue_underline}********************** Red Hat Images ***********
 print()
 for region in regions:
     print(f'{Format.blue_underline}Region:{Format.end} {Format.blue}{region}{Format.end}')
-    ec2 = boto3.client('ec2', region_name=region)
+    ec2 = session.client('ec2', region_name=region)
     response = ec2.describe_images(
         Filters=[
         {
